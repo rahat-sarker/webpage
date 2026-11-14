@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Date Invitation 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#ff9a9e;--g2:#fad0c4;--g3:#fbc2eb;--g4:#a18cd1;--card:rgba(255,255,255,.62);--cardb:rgba(255,255,255,.8);--ink:#4a1d3d;--muted:#8b4a74;--accent:#e6007a;--accent2:#ff5fa2;--chip:rgba(255,255,255,.7);--line:rgba(230,0,122,.25);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:#3a0f3f;--g2:#5b1a4d;--g3:#2a1458;--g4:#6a2c8f;--card:rgba(40,16,48,.6);--cardb:rgba(255,255,255,.18);--ink:#ffe9f4;--muted:#ffb9da;--accent:#ff4da6;--accent2:#ff8fc4;--chip:rgba(255,255,255,.1);--line:rgba(255,143,196,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--g1:#3a0f3f;--g2:#5b1a4d;--g3:#2a1458;--g4:#6a2c8f;--card:rgba(40,16,48,.6);--cardb:rgba(255,255,255,.18);--ink:#ffe9f4;--muted:#ffb9da;--accent:#ff4da6;--accent2:#ff8fc4;--chip:rgba(255,255,255,.1);--line:rgba(255,143,196,.35);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Poppins,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:20px;overflow-x:hidden;
+background:linear-gradient(135deg,var(--g1),var(--g2),var(--g3),var(--g4));background-size:300% 300%;animation:bg 14s ease infinite}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.55;z-index:0;animation:float 10s ease-in-out infinite}
+.b1{width:280px;height:280px;background:#ff7eb3;top:-60px;left:-60px}
+.b2{width:320px;height:320px;background:#a78bfa;bottom:-90px;right:-70px;animation-delay:-4s}
+.b3{width:200px;height:200px;background:#ffd36e;top:40%;right:-50px;animation-delay:-7s}
+@keyframes float{50%{transform:translate(30px,-40px) scale(1.15)}}
+.card{position:relative;z-index:2;width:100%;max-width:470px;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1.5px solid var(--cardb);border-radius:32px;padding:34px 24px 26px;text-align:center;box-shadow:0 20px 60px rgba(160,30,110,.3)}
+h1{font-family:"Dancing Script",cursive,Georgia,serif;font-size:2.5rem;line-height:1.15;margin:6px 0 12px;background:linear-gradient(90deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+p{color:var(--muted);line-height:1.55;margin:0 0 20px}
+.big{font-size:3.6rem;display:inline-block;animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+.step{display:none}.step.on{display:block;animation:in .6s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes in{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+button,input{font:inherit}
+.btn{border:0;border-radius:999px;padding:15px 32px;font-size:1.05rem;font-weight:600;cursor:pointer;color:#fff;background:linear-gradient(90deg,var(--accent),#a855f7);box-shadow:0 8px 24px rgba(230,0,122,.4);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px) scale(1.05)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.row{display:flex;gap:14px;justify-content:center;align-items:center;min-height:80px;flex-wrap:wrap}
+#no{background:var(--chip);color:var(--muted);border:1px solid var(--line);box-shadow:none}
+label{display:block;text-align:left;font-size:.78rem;font-weight:600;color:var(--muted);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.1em}
+input[type=date]{width:100%;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:1.05rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:10px 16px;cursor:pointer;font-size:.92rem;transition:all .2s}
+.chip:hover{transform:translateY(-2px)}
+.chip.sel{background:linear-gradient(90deg,var(--accent),#a855f7);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(230,0,122,.35)}
+.sum{background:var(--chip);border:2px dashed var(--accent2);border-radius:20px;padding:18px;margin:0 0 18px;line-height:1.8;white-space:pre-line;font-weight:500}
+.small{font-size:.85rem;margin:14px 0 0;min-height:2.6em}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px) rotate(-1deg)}40%{transform:translateX(8px) rotate(1deg)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.quote{margin-top:24px;padding-top:18px;border-top:1px dashed var(--line);font-family:"Dancing Script",cursive,Georgia,serif;font-size:1.35rem;color:var(--muted);min-height:3.4em;display:flex;align-items:center;justify-content:center;transition:opacity .6s}
+.quote.fade{opacity:0}
+.heart{position:fixed;bottom:-40px;z-index:1;opacity:.7;animation:up linear forwards;pointer-events:none}
+@keyframes up{to{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<main class="card">
+
+<section class="step on" id="s1">
+  <div class="big" id="big">💌</div>
+  <h1>Hey <span class="nm">beautiful</span>, I have a question…</h1>
+  <p>Will you go on a date with me?</p>
+  <div class="row" id="btns">
+    <button class="btn" id="yes">Yes! 💖</button>
+    <button class="btn" id="no">No</button>
+  </div>
+  <p class="small" id="hint"></p>
+</section>
+
+<section class="step" id="s2">
+  <div class="big">🥰</div>
+  <h1>You said yes!</h1>
+  <p>Now you're the planner. Choose what feels right and I'll make it magical.</p>
+  <label for="d">Which day?</label>
+  <input type="date" id="d">
+  <label>What time of day?</label>
+  <div class="chips" id="time"></div>
+  <label>What should we do?</label>
+  <div class="chips" id="act"></div>
+  <p></p>
+  <button class="btn" id="go" disabled>Lock it in ✨</button>
+</section>
+
+<section class="step" id="s3">
+  <div class="big">🎉</div>
+  <h1>It’s a date!</h1>
+  <div class="sum" id="sum"></div>
+  <button class="btn" id="copy">Send me your answer 💬</button>
+  <p class="small" id="msg">Tap to copy your answer, then paste it in our chat.</p>
+</section>
+
+<div class="quote" id="q"></div>
+</main>
+<script>
+// ✏️ Edit these before sharing
+var HER_NAME = "";   // e.g. "Sara" (empty = "beautiful")
+var MY_NAME  = "";   // e.g. "Dino"
+
+var times=["☀️ Morning","🌤️ Afternoon","🌇 Evening","🌙 Late night"];
+var acts=["🍝 Dinner","🎬 Movie","☕ Café & chat","🌳 Long walk","🎡 Adventure","🎁 Surprise me"];
+var quotes=["Every love story is beautiful, but ours is my favorite.","You’re my favorite notification. 💕","Life is better when I’m laughing with you.","Home is wherever I’m with you.","My heart does a little dance when you smile.","I choose you, today and every day.","You make ordinary moments feel like magic. ✨","Falling for you was the best accident."];
+var pick={time:null,act:null};
+var $=function(i){return document.getElementById(i)};
+function show(n){document.querySelectorAll(".step").forEach(function(s){s.classList.remove("on")});$(n).classList.add("on")}
+if(HER_NAME){document.querySelectorAll(".nm").forEach(function(e){e.textContent=HER_NAME})}
+
+// rotating quotes
+var qi=Math.floor(Math.random()*quotes.length);
+function nextQ(){var q=$("q");q.classList.add("fade");setTimeout(function(){q.textContent=quotes[qi%quotes.length];qi++;q.classList.remove("fade")},600)}
+nextQ();setInterval(nextQ,5500);
+
+// floating hearts
+function hearts(n){for(var i=0;i<n;i++){var h=document.createElement("div");h.className="heart";h.textContent=["💖","💕","💗","✨","🌸","💘"][i%6];h.style.left=Math.random()*100+"vw";h.style.fontSize=(16+Math.random()*22)+"px";h.style.animationDuration=(4+Math.random()*5)+"s";h.style.animationDelay=(Math.random()*2)+"s";document.body.appendChild(h);setTimeout(function(x){x.remove()},11000,h)}}
+hearts(10);setInterval(function(){hearts(3)},2500);
+
+// the "No" button runs away
+var tries=0,last=0,gone=false;
+var lines=["Nice try 😏","Whoa, it moved! 🏃","Are you sure? 🥺","The button is shy… 🙈","Too slow! 💨","Error 404: “No” not found","Just say yes already 💖","That button has legs, apparently 🦵","Plot twist: it only says yes 😎","You’re chasing a button. Think about that. 🤡","It’s tired. Be kind. 🥲","Okay okay, it’s getting dizzy 😵‍💫"];
+var labels=["No","Nope","Really?","Pls no","Don’t","Stop it","🥺","Ouch","Can’t catch me","Help","Dizzy","I quit"];
+var emojis=["😏","🥺","😭","🙈","🤡","💀","🫠","🏃"];
+function dodge(e){
+  if(gone)return;
+  if(e){e.preventDefault();e.stopPropagation()}
+  var now=Date.now();if(now-last<180)return;last=now;
+  tries++;var b=$("no");
+  if(b.parentNode!==document.body){document.body.appendChild(b);b.style.position="fixed";b.style.zIndex=50}
+  var w=b.offsetWidth,h=b.offsetHeight;
+  b.style.transition="left .25s,top .25s,transform .25s";
+  b.style.left=(8+Math.random()*Math.max(10,window.innerWidth-w-16))+"px";
+  b.style.top=(8+Math.random()*Math.max(10,window.innerHeight-h-16))+"px";
+  b.style.transform="rotate("+(Math.random()*50-25)+"deg) scale("+Math.max(.6,1-tries*.03)+")";
+  b.textContent=labels[Math.min(tries,labels.length-1)];
+  $("hint").textContent=lines[Math.min(tries-1,lines.length-1)];
+  $("yes").style.transform="scale("+Math.min(1+tries*.08,1.6)+")";
+  $("yes").textContent=tries>5?"YES!!! 💖💖":"Yes! 💖";
+  $("big").textContent=emojis[tries%emojis.length];
+  var c=document.querySelector(".card");c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake");
+  if(tries>=12){gone=true;setTimeout(function(){b.style.transform="scale(0) rotate(720deg)";b.style.pointerEvents="none";$("hint").textContent="The No button has resigned. It’s just Yes now. 🫡";$("big").textContent="🥳";setTimeout(function(){b.style.display="none"},400)},700)}
+}
+var nb=$("no");
+["mouseenter","pointerover","pointerdown","mousedown","click","focus"].forEach(function(ev){nb.addEventListener(ev,dodge)});
+nb.addEventListener("touchstart",dodge,{passive:false});
+// it also runs away when the cursor gets close
+document.addEventListener("mousemove",function(e){if(gone)return;var r=nb.getBoundingClientRect();var cx=r.left+r.width/2,cy=r.top+r.height/2;if(Math.hypot(e.clientX-cx,e.clientY-cy)<90&&tries>0)dodge()});
+$("yes").onclick=function(){hearts(30);show("s2")};
+
+var t=new Date();$("d").min=t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");
+
+function chips(id,arr,key){arr.forEach(function(v){var c=document.createElement("button");c.type="button";c.className="chip";c.textContent=v;
+c.onclick=function(){pick[key]=v;[].forEach.call($(id).children,function(x){x.classList.remove("sel")});c.classList.add("sel");check()};$(id).appendChild(c)})}
+chips("time",times,"time");chips("act",acts,"act");
+function check(){$("go").disabled=!($("d").value&&pick.time&&pick.act)}
+$("d").onchange=check;
+
+function nice(v){var p=v.split("-");return new Date(p[0],p[1]-1,p[2]).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}
+var text="";
+$("go").onclick=function(){
+  text="Yes, I’m in! 💖\n📅 "+nice($("d").value)+"\n🕐 "+pick.time+"\n✨ "+pick.act;
+  $("sum").textContent=text;hearts(45);show("s3")};
+$("copy").onclick=function(){
+  var done=function(){$("msg").textContent="Copied! Paste it in our chat 💕"};
+  var fb=function(){var a=document.createElement("textarea");a.value=text;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){$("msg").textContent="Couldn’t copy, so screenshot this page and send it 📸"}a.remove()};
+  try{navigator.clipboard.writeText(text).then(done,fb)}catch(e){fb()}};
+</script>
+</body>
+</html>
